@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+{% include 'head.html' %}
 <body>
- <h1>Hello World</h1>
+{% include 'header.html' %}
+{% block content %} <!--외부에서 블럭을 가져와 박는 경우-->
+
+{% endblock %}
+{% include 'footer.html' %}
 </body>
 </html>
