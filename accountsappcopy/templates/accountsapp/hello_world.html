@@ -1,6 +1,21 @@
 {% extends 'basecopy.html' %}
 {% block content%}
+    <style>
+        .testing{
+            height:48px;
+            width:48px;
+            background-color: yellow;
+            margin:1rem;
+            border-radius: .5rem;
+        }
+    </style>
     <div style = "height:20rem; background-color: aqua; margin: 2rem; border-radius: 1rem;">
     <h1> test test test</h1>
+    <div class = 'testing'style = "display: block ">block</div>
+    <div class = 'testing'style = "display: inline">inline</div>
+    <div class = 'testing'style = "display: inline-block">inline_block</div>
+    <div class = 'testing'style = "display: none">none</div>
+    <div class = 'testing'>base</div>
+
     </div>
 {% endblock %}
