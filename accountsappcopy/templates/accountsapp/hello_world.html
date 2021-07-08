@@ -5,6 +5,9 @@
     <div style = "margin: 2rem; text-align: center;">
     <h1> METHOD</h1>
     <h3>{{ text }}</h3>
-
+    <form action= "/accountsapp/hello_world/" method="post">
+    {% csrf_token %}
+    <input type = "submit" class = "btn btn-dark rounded-pill px-5">
+    </form>
     </div>
 {% endblock %}

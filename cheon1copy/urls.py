@@ -18,6 +18,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accountscopy/',include('accountsappcopy.urls'))
+    path('accountsapp/',include('accountsappcopy.urls'))
     #이떄 url path 를 만들어도 accountsappcopy app에는 url이 없다
 ]
