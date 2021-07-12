@@ -12,7 +12,10 @@ def hello_world(request):
         new_data = HelloWorld()
         new_data.text = temp  # client 로 받아온 data 를 db 모델에 저장한다.
         new_data.save()  # client 로 받은 데이터를 실제 db 에 저장
-        return render(request,'accountsapp/hello_world.html',context={'new_data':new_data})
+
+        data_list = HelloWorld.objects.all()
+        return render(request,'accountsapp/hello_world.html',context={'data_list':data_list})
     else:
-        return render(request,'accountsapp/hello_world.html',context = {'text':'GET METHOD'})
+        data_list = HelloWorld.objects.all()
+        return render(request,'accountsapp/hello_world.html',context = {'data_list':data_list})
     #HttpResponse('Hello World')
