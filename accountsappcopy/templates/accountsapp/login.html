@@ -2,10 +2,10 @@
 {% block content %} <!--extends 를 이용하여 basecopy.html 에 저장할 html 문서 -->
     <div class = "text-center">
         <div class = "m-5">
-                <h4>Sign Up</h4>
+                <h4>Login</h4>
         </div>
         <div>
-            <form action = "{% url 'accountsapp:create' %}" method = "post">
+            <form action = "{% url 'accountsapp:login' %}" method = "post">
                     {% csrf_token %}
                     {{ form }}
                 <div class = "m-5">
