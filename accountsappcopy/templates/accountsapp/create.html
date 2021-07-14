@@ -1,13 +1,14 @@
 {% extends 'basecopy.html' %}
+{% load bootstrap4 %}
 {% block content %} <!--extends 를 이용하여 basecopy.html 에 저장할 html 문서 -->
-    <div class = "text-center">
+    <div class = "text-center mx-500">
         <div class = "m-5">
                 <h4>Sign Up</h4>
         </div>
         <div>
             <form action = "{% url 'accountsapp:create' %}" method = "post">
                     {% csrf_token %}
-                    {{ form }}
+                   {% bootstrap_form form %}
                 <div class = "m-5">
                     <input type = "submit" class="btn btn-dark rounded-pill px-5">
 

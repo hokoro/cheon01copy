@@ -13,3 +13,9 @@
     margin-top:2rem;
     font-family: 'Festive', cursive;
 }
+
+.mx-500{
+    max-width: 500px;
+    padding:1rem 1.5rem;
+
+}
