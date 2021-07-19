@@ -13,6 +13,9 @@
             <a href = '{% url 'accountsapp:update' pk=target_user.pk %}'>
                 Update Info
             </a>
+            <a href = '{% url 'accountsapp:delete' pk=target_user.pk %}'>
+                Quit
+            </a>
         </div>
     </div>
 {% endblock %}
