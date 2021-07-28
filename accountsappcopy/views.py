@@ -36,9 +36,10 @@ def hello_world(request):
 class AccountCreateView(CreateView):
     model = User
     form_class = UserCreationForm
-    success_url = reverse_lazy('accountsapp:hello_world')
+    #success_url = reverse_lazy('accountsapp:hello_world')
     template_name = 'accountsapp/create.html'
-
+    def get_success_url(self):
+        return reverse('accountsapp:detail',kwargs= {'pk':self.object.pk})
 
 class AccountDetailView(DetailView):
     model = User
@@ -52,10 +53,11 @@ has_ownership = [login_required,account_ownership_required]
 class AccountUpdateView(UpdateView):
     model = User
     form_class = AccountCreationForm
-    success_url = reverse_lazy('accountsapp:hello_world')
+    #success_url = reverse_lazy('accountsapp:hello_world')
     context_object_name = 'target_user'
     template_name = 'accountsapp/update.html'
-
+    def get_success_url(self):
+        return reverse('accountsapp:detail',kwargs= {'pk':self.object.pk}) #accounts 는 계정이 바로 user 이기때문에 거치지 않고 바로 pk 를 받는다
 
 @method_decorator(has_ownership,'get')
 @method_decorator(has_ownership,'post')
