@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'accountsappcopy',
     'bootstrap4',
     'profileapp',
+    'articleapp',
 
 ]
 
