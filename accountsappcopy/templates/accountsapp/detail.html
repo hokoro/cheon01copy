@@ -22,16 +22,14 @@
             </h4>
             {% endif %}
         </div>
-        <div>
-                {{ target_user.date_joined }} {# 계정의 가입 일자를 출력  #}
-        </div>
+
         {% if user == target_user %} {# 로그 아웃 된 창에서 다시 돌아가는걸 방지 하기 위해  #}
         <div>
-            <a href = '{% url 'accountsapp:update' pk=target_user.pk %}'>
-                Update Info
+            <a href = '{% url 'accountsapp:update' pk=target_user.pk %}' class = "material-icons round_button mx-1">
+                settings
             </a>
-            <a href = '{% url 'accountsapp:delete' pk=target_user.pk %}'>
-                Quit
+            <a href = '{% url 'accountsapp:delete' pk=target_user.pk %}' class = "material-icons round_button mx-1">
+                close
             </a>
         </div>
         {% endif %}

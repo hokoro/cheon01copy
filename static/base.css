@@ -35,6 +35,7 @@
     box-shadow: 0 0 3px black;
     border-radius: 20rem;
     padding:0.3rem;
+    /*    */
 }
 .round_button:hover{
     color:dimgray;
