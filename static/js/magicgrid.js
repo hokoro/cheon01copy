@@ -281,6 +281,9 @@ let magicGrid = new MagicGrid({
   static: true,
   useMin: true
 });
+
+magicGrid.listen();
+
 var masonrys  = document.getElementsByTagName("img") /*image tag를 찾는다*/
 
 for(let i = 0; masonrys.length;i++)
@@ -291,4 +294,3 @@ for(let i = 0; masonrys.length;i++)
 
   },false)
 }
-magicGrid.listen();
