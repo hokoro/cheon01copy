@@ -20,7 +20,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accountsapp/',include('accountsappcopy.urls')),
+    path('accounts/',include('accountsappcopy.urls')),
     #이떄 url path 를 만들어도 accountsappcopy app에는 url이 없다
     path('profile/', include('profileapp.urls')),
     path('article/',include('articleapp.urls')),
