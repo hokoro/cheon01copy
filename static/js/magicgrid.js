@@ -286,7 +286,7 @@ magicGrid.listen();
 
 var masonrys  = document.getElementsByTagName("img") /*image tag를 찾는다*/
 
-for(let i = 0; masonrys.length;i++)
+for(let i = 0; i< masonrys.length;i++)
 {
   masonrys[i].addEventListener('load',function ()
   {
