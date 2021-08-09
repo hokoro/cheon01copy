@@ -24,4 +24,5 @@ urlpatterns = [
     #이떄 url path 를 만들어도 accountsappcopy app에는 url이 없다
     path('profile/', include('profileapp.urls')),
     path('article/',include('articleapp.urls')),
+    path('comment/',include('commentapp.urls')),
 ] + static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
