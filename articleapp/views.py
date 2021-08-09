@@ -5,10 +5,12 @@ from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView, ListView
+from django.views.generic.edit import FormMixin
 
 from articleapp.decorator import article_ownership_required
 from articleapp.forms import ArticleCreationForm
 from articleapp.models import Article
+from commentapp.forms import CommentCreationForm
 
 
 @method_decorator(login_required,'get')
@@ -23,8 +25,9 @@ class ArticleCreateView(CreateView):
         form.instance.writer = self.request.user #글이 작성 되면 요청을 보내는 유저의 정보를 보낸다
         return super().form_valid(form)
 
-class ArticleDetailView(DetailView):
+class ArticleDetailView(DetailView,FormMixin):
     model = Article
+    form_class = CommentCreationForm
     context_object_name = 'target_article'
     template_name = 'articleapp/detail.html'
 
