@@ -3,8 +3,13 @@
 {% load static %}
 
     <style>
+    .container{
+        padding:0;
+        margin: 0 Auto;
+    }
 .container div {
-  width: 280px;
+  width: 45%;
+    max-width: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +28,7 @@
 
     </style>
 
-<div class="container">
+<div class="container my-4">
   {% for article in article_list %}
     <div>
         <a href="{% url 'articleapp:detail' pk=article.pk %}">
