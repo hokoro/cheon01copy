@@ -8,10 +8,12 @@ from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
+from django.views.generic.list import MultipleObjectMixin
 
 from accountsappcopy.decorators import account_ownership_required
 from accountsappcopy.forms import AccountCreationForm
 from accountsappcopy.models import HelloWorld
+from articleapp.models import Article
 
 
 @login_required(login_url=reverse_lazy('accountsapp:login'))
@@ -36,31 +38,43 @@ def hello_world(request):
 class AccountCreateView(CreateView):
     model = User
     form_class = UserCreationForm
-    #success_url = reverse_lazy('accountsapp:hello_world')
+    # success_url = reverse_lazy('accountsapp:hello_world')
     template_name = 'accountsapp/create.html'
-    def get_success_url(self):
-        return reverse('accountsapp:detail',kwargs= {'pk':self.object.pk})
 
-class AccountDetailView(DetailView):
+    def get_success_url(self):
+        return reverse('accountsapp:detail', kwargs={'pk': self.object.pk})
+
+
+class AccountDetailView(DetailView, MultipleObjectMixin):
     model = User
     context_object_name = 'target_user'
     template_name = 'accountsapp/detail.html'
+    paginate_by = 20
+
+    def get_context_data(self, **kwargs):
+        article_list = Article.objects.filter(writer=self.object)
+        return super().get_context_data(object_list=article_list, **kwargs)
 
 
-has_ownership = [login_required,account_ownership_required]
-@method_decorator(has_ownership,'get')
-@method_decorator(has_ownership,'post')
+has_ownership = [login_required, account_ownership_required]
+
+
+@method_decorator(has_ownership, 'get')
+@method_decorator(has_ownership, 'post')
 class AccountUpdateView(UpdateView):
     model = User
     form_class = AccountCreationForm
-    #success_url = reverse_lazy('accountsapp:hello_world')
+    # success_url = reverse_lazy('accountsapp:hello_world')
     context_object_name = 'target_user'
     template_name = 'accountsapp/update.html'
-    def get_success_url(self):
-        return reverse('accountsapp:detail',kwargs= {'pk':self.object.pk}) #accounts 는 계정이 바로 user 이기때문에 거치지 않고 바로 pk 를 받는다
 
-@method_decorator(has_ownership,'get')
-@method_decorator(has_ownership,'post')
+    def get_success_url(self):
+        return reverse('accountsapp:detail',
+                       kwargs={'pk': self.object.pk})  # accounts 는 계정이 바로 user 이기때문에 거치지 않고 바로 pk 를 받는다
+
+
+@method_decorator(has_ownership, 'get')
+@method_decorator(has_ownership, 'post')
 class AccountDeleteView(DeleteView):
     model = User
     success_url = reverse_lazy('accountsapp:hello_world')
