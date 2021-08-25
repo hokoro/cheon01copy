@@ -19,6 +19,11 @@ class LikeArticleView(RedirectView):
         likeRecord = LikeRecord.objects.filter(user = user,article = article)
 
         if likeRecord.exists():
+            '''
+            likeRecord.delete()
+            article.like -= 1
+            article.save()
+            '''
             return HttpResponseRedirect(reverse('articleapp:detail',kwargs={'pk':kwargs['article_pk']}))
         else:
             LikeRecord(user = user,article=article).save()
