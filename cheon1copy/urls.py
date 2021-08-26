@@ -18,7 +18,10 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+from articleapp.views import ArticleListView
+
 urlpatterns = [
+    path('',ArticleListView.as_view(),name='home'),
     path('admin/', admin.site.urls),
     path('accounts/',include('accountsappcopy.urls')),
     #이떄 url path 를 만들어도 accountsappcopy app에는 url이 없다
