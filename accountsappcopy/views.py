@@ -16,23 +16,7 @@ from accountsappcopy.models import HelloWorld
 from articleapp.models import Article
 
 
-@login_required(login_url=reverse_lazy('accountsapp:login'))
-def hello_world(request):
-    if request.method == 'POST':
-        temp = request.POST.get('input')  # input 으로 입력 한 데이터 를 post.get 을 사용해 얻어 온다
 
-        new_data = HelloWorld()
-        new_data.text = temp  # client 로 받아온 data 를 db 모델에 저장한다.
-        new_data.save()  # client 로 받은 데이터를 실제 db 에 저장
-        '''
-        data_list = HelloWorld.objects.all()
-        return render(request,'accountsapp/hello_world.html',context={'data_list':data_list})
-        '''
-        return HttpResponseRedirect(reverse('accountsapp:hello_world'))
-    else:
-        data_list = HelloWorld.objects.all()
-        return render(request, 'accountsapp/hello_world.html', context={'data_list': data_list})
-        # HttpResponse('Hello World')
 
 
 class AccountCreateView(CreateView):
@@ -77,6 +61,6 @@ class AccountUpdateView(UpdateView):
 @method_decorator(has_ownership, 'post')
 class AccountDeleteView(DeleteView):
     model = User
-    success_url = reverse_lazy('accountsapp:hello_world')
+    success_url = reverse_lazy('articleapp:list')
     context_object_name = 'target_user'
     template_name = 'accountsapp/delete.html'

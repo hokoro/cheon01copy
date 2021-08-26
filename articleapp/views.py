@@ -18,7 +18,7 @@ from commentapp.forms import CommentCreationForm
 class ArticleCreateView(CreateView):
     model = Article
     form_class = ArticleCreationForm
-    success_url = reverse_lazy('accountsapp:hello_world')
+    success_url = reverse_lazy('articleapp:list')
     template_name = 'articleapp/create.html'
 
     def form_valid(self, form): #검증이 끝나면 마지막에 실행되는 메소드
