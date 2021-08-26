@@ -1,6 +1,11 @@
 {% extends 'basecopy.html' %}
 {% load bootstrap4 %}
 {% block content %} <!--extends 를 이용하여 basecopy.html 에 저장할 html 문서 -->
+    <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+
+
+
     <div class = "text-center mx-500 m-auto">
         <div class = "m-5">
                 <h4>Create Article</h4>
@@ -17,4 +22,7 @@
 
         </div>
     </div>
+
+    <script>var editor = new MediumEditor('.editable');</script>
+
 {% endblock %}
