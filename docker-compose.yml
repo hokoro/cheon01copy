@@ -1,0 +1,28 @@
+version: "3.7"
+services:
+  nginx:
+    image: nginx:1.19.5
+    networks:
+      - cheon_1_network
+    volumes:
+      - cheon_1_media:/data/media/
+      - cheon_1_static:/data/static/
+      - /home/hokoro123/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+  django:
+    image: cheondjango:3
+    networks:
+      - cheon_1_network
+    volumes:
+      - cheon_1_media:/home/cheon01copy/media/
+      - cheon_1_static:/home/cheon01copy/staticfiles/
+
+
+
+networks:
+  cheon_1_network:
+
+volumes:
+  cheon_1_media:
+  cheon_1_static:
