@@ -10,6 +10,7 @@ services:
       - /home/hokoro123/nginx.conf:/etc/nginx/nginx.conf
     ports:
       - 80:80
+
   django:
     image: cheondjango:4
     networks:
