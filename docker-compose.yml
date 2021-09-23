@@ -11,14 +11,24 @@ services:
     ports:
       - 80:80
   django:
-    image: cheondjango:3
+    image: cheondjango:4
     networks:
       - cheon_1_network
     volumes:
       - cheon_1_media:/home/cheon01copy/media/
       - cheon_1_static:/home/cheon01copy/staticfiles/
 
-
+  mariadb:
+    image: mariadb:10.5
+    networks:
+      - cheon_1_network
+    volumes:
+      - cheon_1_mariadb:/var/lib/mysql
+    environment:
+      MARIADB_DATABASE: django
+      MARIADB_USER: django
+      MARIADB_PASSWORD: fkaus132^^
+      MARIADB_ROOT_PASSWORD: fkaus132^^
 
 networks:
   cheon_1_network:
@@ -26,3 +36,4 @@ networks:
 volumes:
   cheon_1_media:
   cheon_1_static:
+  cheon_1_mariadb:
