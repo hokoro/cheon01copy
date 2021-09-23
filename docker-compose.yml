@@ -12,7 +12,7 @@ services:
       - 80:80
 
   django:
-    image: cheondjango:4
+    image: cheondjango:5
     networks:
       - cheon_1_network
     secrets:
@@ -36,9 +36,9 @@ services:
       - cheon_1_mariadb:/var/lib/mysql
     environment:
       MARIADB_DATABASE: django
-      MARIADB_USER: django
-      MARIADB_PASSWORD: fkaus132^^
-      MARIADB_ROOT_PASSWORD: fkaus132^^
+      MARIADB_USER_FILE: /run/secrets/MARIADB_USER
+      MARIADB_PASSWORD_FILE: /run/secrets/MARIADB_PASSWORD
+      MARIADB_ROOT_PASSWORD_FILE: /run/secrets/MARIADB_ROOT_PASSWORD
 
 networks:
   cheon_1_network:
